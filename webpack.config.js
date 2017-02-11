@@ -2,7 +2,7 @@ const path = require( 'path' );
 const webpack = require( 'webpack' );
 
 module.exports = {
-	entry: './es6/main.js',
+	entry: './src/es6/main.js',
 	output: { path: __dirname, filename: './build/js/main.min.js' },
 	module: {
 		loaders: [

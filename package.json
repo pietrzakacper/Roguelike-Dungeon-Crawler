@@ -10,7 +10,7 @@
     "build": "webpack",
     "start": "npm run watch-js",
     "watch-js": "webpack-dev-server --progress --colors",
-    "watch-sass": "node-sass sass -o build/css -w"
+    "watch-sass": "node-sass src/sass -o build/css -w"
   },
   "author": "",
   "license": "ISC",
