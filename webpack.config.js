@@ -2,8 +2,8 @@ const path = require( 'path' );
 const webpack = require( 'webpack' );
 
 module.exports = {
-	entry: './src/es6/main.js',
-	output: { path: __dirname, filename: './build/js/main.min.js' },
+	entry: './src/es6/client.js',
+	output: { path: __dirname, filename: './build/js/client.min.js' },
 	module: {
 		loaders: [
 			{
@@ -12,10 +12,11 @@ module.exports = {
 				exclude: /node_modules/,
 				query:
 				{
-					presets: [ 'es2015', 'react' ]
+					presets: [ 'es2015', 'react' ],
+					plugins: [ 'transform-decorators-legacy']
 				}
 			} ],
-	devtool: 'source-map',
+	devtool: ['source-map'],
 	plugins: [
          new webpack.optimize.UglifyJsPlugin({
              compress: {
