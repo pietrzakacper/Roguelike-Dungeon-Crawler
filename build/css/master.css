@@ -3,3 +3,22 @@ body {
   margin: 0;
   background-color: #143f70;
   color: #f0f0f0; }
+
+.tile {
+  width: 20;
+  height: 20;
+  color: white; }
+
+.header-container {
+  text-align: center; }
+
+.statistics-bar {
+  background: black; }
+  .statistics-bar .stat {
+    text-align: center;
+    margin-top: 8px;
+    margin-bottom: 8px; }
+    .statistics-bar .stat .stat-label {
+      font-weight: bold; }
+    .statistics-bar .stat .stat-value {
+      margin-left: 4px; }
