@@ -4,16 +4,12 @@ body {
   background-color: #143f70;
   color: #f0f0f0; }
 
-.tile {
-  width: 20;
-  height: 20;
-  color: white; }
-
 .header-container {
   text-align: center; }
 
 .statistics-bar {
-  background: black; }
+  background: black;
+  margin-bottom: 20px; }
   .statistics-bar .stat {
     text-align: center;
     margin-top: 8px;
@@ -22,3 +18,30 @@ body {
       font-weight: bold; }
     .statistics-bar .stat .stat-value {
       margin-left: 4px; }
+
+.board {
+  width: 100%;
+  text-align: center; }
+  .board .tile-row {
+    display: block;
+    height: 40px; }
+    .board .tile-row .tile {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      background: white;
+      color: black; }
+    .board .tile-row .floor {
+      background: #a2a2a2; }
+    .board .tile-row .wall {
+      background: #1a1a1a; }
+    .board .tile-row .player {
+      background: #3fc8f4; }
+    .board .tile-row .enemy {
+      background: #dd001a; }
+    .board .tile-row .health-item {
+      background: #63d200; }
+    .board .tile-row .weapon {
+      background: #442dff; }
+    .board .tile-row .not-defined {
+      background: #d4ff00; }

@@ -1,16 +1,14 @@
 import React from 'react';
 
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 
 const StatisticsBar = ( props ) => (
-  <Grid >
-    <Row className='statistics-bar'>
-      <Col md={3} className='stat'><span className='stat-label'>Health:</span><span className='stat-value'>{props.playerHealth}</span></Col>
-      <Col md={3} className='stat'><span className='stat-label'>Weapon:</span><span className='stat-value'>{props.playerWeapon}</span></Col>
-      <Col md={3} className='stat'><span className='stat-label'>Level:</span><span className='stat-value'>{props.playerLevel}</span></Col>
-      <Col md={3} className='stat'><span className='stat-label'>Enemies Left:</span><span className='stat-value'>{props.enemiesLeft}</span></Col>
-    </Row>
-  </Grid>
+  <Row className='statistics-bar'>
+    <Col md={3} className='stat'><span className='stat-label'>Health:</span><span className='stat-value'>{props.playerHealth}</span></Col>
+    <Col md={3} className='stat'><span className='stat-label'>Weapon:</span><span className='stat-value'>{props.playerWeapon}</span></Col>
+    <Col md={3} className='stat'><span className='stat-label'>Level:</span><span className='stat-value'>{props.playerLevel}</span></Col>
+    <Col md={3} className='stat'><span className='stat-label'>Enemies Left:</span><span className='stat-value'>{props.enemiesLeft}</span></Col>
+  </Row>
  );
 
 StatisticsBar.defaultProps = {

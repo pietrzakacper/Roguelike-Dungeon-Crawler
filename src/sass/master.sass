@@ -4,16 +4,12 @@ body
   background-color: rgb(20, 63, 112)
   color: rgb(240, 240, 240)
 
-.tile
-  width: 20
-  height: 20
-  color: rgb(255, 255, 255)
-
 .header-container
   text-align: center
 
 .statistics-bar
   background: rgb(0, 0, 0)
+  margin-bottom: 20px
   .stat
     text-align: center
     margin-top: 8px
@@ -23,3 +19,30 @@ body
       font-weight: bold
     .stat-value
       margin-left: 4px
+
+.board
+  width: 100%
+  text-align: center
+  .tile-row
+    display: block
+    height: 40px
+    .tile
+      display: inline-block
+      width: 40px
+      height: 40px
+      background: rgb(255, 255, 255)
+      color: black
+    .floor
+      background: rgb(162, 162, 162)
+    .wall
+      background: rgb(26, 26, 26)
+    .player
+      background: rgb(63, 200, 244)
+    .enemy
+      background: rgb(221, 0, 26)
+    .health-item
+      background: rgb(99, 210, 0)
+    .weapon
+      background: rgb(68, 45, 255)
+    .not-defined
+      background: rgb(212, 255, 0)
