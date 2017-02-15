@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
 
-import player from './playerReducer';
+import playerReducer from './playerReducer';
 
-export default combineReducers( { player } );
+export default combineReducers( { playerReducer } );
