@@ -1,5 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { tileIdToClassName } from '../utils/boardUtils';
+
+@connect( store => ( {
+	board: store.board.board,
+	viewBounds: store.board.viewBounds
+} ) )
 export default class Board extends React.Component{
 	constructor( props ){
 		super( props );
@@ -7,12 +13,12 @@ export default class Board extends React.Component{
 	getBoard(){
 		const boardToRender = [];
 
-		for ( const rowIndex in this.props.board ){
+		for ( let i = this.props.viewBounds.top; i < this.props.viewBounds.top + this.props.viewBounds.height; i++ ){
 			const rowToRender = [];
-			for ( const tileIndex in this.props.board[ rowIndex ] ){
-				rowToRender.push( <span key={tileIndex} className={`tile ${tileIdToClassName( this.props.board[ rowIndex ][ tileIndex ] )}`} /> );
+			for ( let j = this.props.viewBounds.left; j < this.props.viewBounds.left + this.props.viewBounds.width; j++ ){
+				rowToRender.push( <span key={j} className={`tile ${tileIdToClassName( this.props.board[ i ][ j ] )}`} /> );
 			}
-			boardToRender.push( <span key={rowIndex} className='tile-row'>{rowToRender}</span> );
+			boardToRender.push( <span key={i} className='tile-row'>{rowToRender}</span> );
 		}
 
 		return boardToRender;
@@ -22,11 +28,8 @@ export default class Board extends React.Component{
 	}
 }
 
-Board.defaultProps = {
-	board: [ [ 0, 0, 0, 0, 0, 0, 0, 0 ], [ 0, 0, 0, 1, 0, 0, 0, 0 ], [ 0, 0, 0, 1, 0, 0, 0, 0 ], [ 0, 0, 0, 1, 0, 0, 0, 0 ], [ 0, 0, 0, 0, 0, 0, 0, 0 ], [ 0, 0, 0, 1, 0, 0, 0, 0 ], [ 0, 0, 0, 1, 0, 0, 0, 0 ], [ 0, 0, 0, 1, 0, 0, 0, 0 ] ]
-};
-
 // TODO isRequired
 Board.propTypes = {
-	board: React.PropTypes.array
+	board: React.PropTypes.array,
+	viewBounds: React.PropTypes.object
 };

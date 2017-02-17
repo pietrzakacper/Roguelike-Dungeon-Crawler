@@ -1,10 +1,10 @@
-const MAX_NUMBER_OF_ROOMS = 10;
-const MIN_NUMBER_OF_ROOMS = 3;
-const MIN_ROOM_SIZE = 4;
-const MAX_ROOM_SIZE = 8;
-const DUNGEON_WIDTH = 80;
-const DUNGEON_HEIGHT = 80;
-
+const MAX_NUMBER_OF_ROOMS = 30;
+const MIN_NUMBER_OF_ROOMS = 15;
+const MIN_ROOM_SIZE = 8;
+const MAX_ROOM_SIZE = 16;
+export const DUNGEON_WIDTH = 80;
+export const DUNGEON_HEIGHT = 80;
+// TODO double corridors
 const getDungeonFilledWithWallTiles = () => {
 	const dungeon = [];
 
@@ -29,7 +29,7 @@ class Room{
 		this.center = { x: Math.floor( x + width / 2 ), y: Math.floor(  y + height / 2  ) };
 	}
 	intersects( room ){
-		return this.x <= room.x + room.width && this.x + this.width >= room.x && this.y <= room.y + room.heght && this.y + this.height >= room.y;
+		return  this.x <= room.x + room.width && this.x + this.width >= room.x && this.y <= room.y + room.height && this.y + this.height >= room.y;
 	}
 }
 
@@ -45,13 +45,13 @@ const createRoomInDungeon = ( room, dungeon ) => {
 
 const createVerticalCorridorInDungeon = ( y1, y2, x, dungeon ) => {
 	for ( let i = Math.min( y1, y2 ); i < Math.max( y1, y2 ); i++ ){
-		dungeon[ i ][ x ] = 0;
+		dungeon[ i ][ x ] = dungeon[ i ][ ( x > 0 ) ?  x - 1 : x + 1 ] = 0;
 	}
 };
 
 const createHorizontalCorridorInDungeon = ( x1, x2, y, dungeon ) => {
 	for ( let i = Math.min( x1, x2 ); i < Math.max( x1, x2 ); i++ ){
-		dungeon[ y ][ i ] = 0;
+		dungeon[ y ][ i ] = dungeon[ ( y > 0 ) ?  y - 1 : y + 1 ][ i ] = 0;
 	}
 };
 

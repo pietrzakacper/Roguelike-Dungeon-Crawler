@@ -13,6 +13,7 @@
 			"impliedStrict": true
 		}
 	},
+	"parser": "babel-eslint",
 	"rules": {
 		"indent": [ 1, "tab" ],
 		"linebreak-style": [ 2, "unix" ],

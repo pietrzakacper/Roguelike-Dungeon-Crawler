@@ -24,11 +24,11 @@ body {
   text-align: center; }
   .board .tile-row {
     display: block;
-    height: 40px; }
+    height: 24px; }
     .board .tile-row .tile {
       display: inline-block;
-      width: 40px;
-      height: 40px;
+      width: 24px;
+      height: 24px;
       background: white;
       color: black; }
     .board .tile-row .floor {
