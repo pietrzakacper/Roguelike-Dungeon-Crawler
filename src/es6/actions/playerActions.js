@@ -1,6 +1,5 @@
 import { PLAYER_MOVEMENT } from './actionTypes';
 
-export const moveRight = () => {
-	console.log( 'moveRight action ' );
-	return { type: PLAYER_MOVEMENT };
+export const move = ( direction ) => {
+	return { type: PLAYER_MOVEMENT, direction };
 };

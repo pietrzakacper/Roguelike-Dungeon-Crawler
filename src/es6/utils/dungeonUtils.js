@@ -4,7 +4,7 @@ const MIN_ROOM_SIZE = 8;
 const MAX_ROOM_SIZE = 16;
 export const DUNGEON_WIDTH = 80;
 export const DUNGEON_HEIGHT = 80;
-// TODO double corridors
+
 const getDungeonFilledWithWallTiles = () => {
 	const dungeon = [];
 
@@ -35,10 +35,13 @@ class Room{
 
 const integerInRange = ( min, max ) => Math.floor( Math.random() * ( max - min + 1 ) ) + min;
 
-const createRoomInDungeon = ( room, dungeon ) => {
+const createRoomInDungeon = ( room, dungeon, floorTiles ) => {
 	for ( let i = room.y ; i < room.y + room.height; i++ ){
 		for ( let j = room.x ; j < room.x + room.width; j++ ){
 			dungeon[ i ][ j ] = 0;
+			if ( i !== room.y && i !== room.y + room.height - 1  && j !== room.x && j !== room.x + room.width - 1 ){
+				floorTiles.push( { x: j, y: i } );
+			}
 		}
 	}
 };
@@ -65,7 +68,7 @@ const connectRoomsWithCorridors = ( room1, room2, dungeon ) => {
 	}
 };
 
-const placeRooms = ( dungeon ) => {
+const placeRooms = ( dungeon, floorTiles ) => {
 	const rooms = [];
 	let numberOfTries = 0;
 	while ( numberOfTries <= MAX_NUMBER_OF_ROOMS || rooms.length < MIN_NUMBER_OF_ROOMS ){
@@ -77,7 +80,7 @@ const placeRooms = ( dungeon ) => {
 		const newRoom = new Room( x, y, width, height );
 
 		if ( rooms.every( room => !room.intersects( newRoom ) ) ){
-			createRoomInDungeon( newRoom, dungeon );
+			createRoomInDungeon( newRoom, dungeon, floorTiles );
 
 			if ( rooms.length !== 0 ){
 				connectRoomsWithCorridors( newRoom, rooms[ rooms.length - 1 ], dungeon );
@@ -91,7 +94,8 @@ const placeRooms = ( dungeon ) => {
 };
 
 export const generateDungeon = () => {
-	const dungeon = getDungeonFilledWithWallTiles();
-	placeRooms( dungeon );
-	return dungeon;
+	const board = getDungeonFilledWithWallTiles();
+	const floorTiles = [];
+	placeRooms( board, floorTiles );
+	return { board, floorTiles };
 };
