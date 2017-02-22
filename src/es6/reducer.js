@@ -34,7 +34,7 @@ const defaultState = ( () => {
 
 	const viewBounds = getViewBounds( playerPosition, dungeon.board, width, height  );
 
-	return { board: dungeon.board, numberOfEnemies: 0, viewBounds, playerPosition, width, height };
+	return { board: dungeon.board, numberOfEnemies: 0, viewBounds, playerPosition, playerLevel: 1, playerWeapon: 'fists', playerHealth: 100, enemiesLeft: enemies.length, width, height };
 } )();
 
 const getNewPlayerPosition = ( oldPosition, board, direction ) => {
