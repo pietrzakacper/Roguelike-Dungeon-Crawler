@@ -4,6 +4,20 @@ import { WINDOW_RESIZE, PLAYER_MOVEMENT } from './actions/actionTypes';
 
 const areTilesEqual = ( tile1, tile2 ) => tile1.x === tile2.x && tile1.y === tile2.y;
 
+const placeTiles = ( dungeon, occupiedTiles, targetTileId, numberOfTargetTiles ) => {
+	const tiles = [];
+
+	for ( let i = 0; i < numberOfTargetTiles; i++ ){
+		const targetTilePosition = dungeon.floorTiles[ Math.floor( Math.random() * dungeon.floorTiles.length ) ];
+		if ( [ ...occupiedTiles, ...tiles ].every( occupiedTile => !areTilesEqual( occupiedTile, targetTilePosition ) ) ){
+			tiles.push( targetTilePosition );
+			dungeon.board[ targetTilePosition.y ][ targetTilePosition.x ] = targetTileId;
+		}
+	}
+
+	return tiles;
+};
+
 const defaultState = ( () => {
 	const dungeon = generateDungeon();
 
@@ -11,15 +25,10 @@ const defaultState = ( () => {
 	dungeon.board[ playerPosition.y ][ playerPosition.x ] = 2;
 
 	const enemiesNumber = 10 + Math.floor( ( Math.random() * 11 ) );
-	const enemies = [];
-	for ( let i = 0; i < enemiesNumber; i++ ){
-		const enemyPosition = dungeon.floorTiles[ Math.floor( Math.random() * dungeon.floorTiles.length ) ];
-		if ( [ ...enemies, playerPosition ].every( occupiedTile => !areTilesEqual( occupiedTile, enemyPosition ) ) ){
-			enemies.push( enemyPosition );
-			dungeon.board[ enemyPosition.y ][ enemyPosition.x ] = 3;
-		}
-	}
-  // TODO place enemies, player etc.
+	const enemies = placeTiles( dungeon, [ playerPosition ], 3, enemiesNumber, 10 + Math.floor( ( Math.random() * 11 ) ) );
+	const healthItems = placeTiles( dungeon, [ ...enemies, playerPosition ], 4, 5 + Math.floor( ( Math.random() * 5 ) ) );
+	const weapons = placeTiles( dungeon, [ ...healthItems, ...enemies, playerPosition ], 5, 3 );
+
 	const width = document.getElementById( 'app' ).clientWidth;
 	const height = window.innerHeight - 200;
 
