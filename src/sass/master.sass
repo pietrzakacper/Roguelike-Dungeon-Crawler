@@ -28,14 +28,18 @@ body
     height: 24px
     .tile
       display: inline-block
+      box-sizing: border-box
       width: 24px
       height: 24px
       background: rgb(255, 255, 255)
-      color: black
+      color: rgb(0, 0, 0)
+      border: 2px solid rgba(31, 31, 31, 0.53)
     .floor
       background: rgb(162, 162, 162)
+      border: none
     .wall
       background: rgb(26, 26, 26)
+      border: none
     .player
       background: rgb(63, 200, 244)
     .enemy
