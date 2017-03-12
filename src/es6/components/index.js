@@ -5,8 +5,7 @@ import StatisticsBar from './StatisticsBar';
 import Board from './Board';
 
 import { connect } from 'react-redux';
-import { windowResize } from '../actions/boardActions';
-import { move } from '../actions/playerActions';
+import { windowResize, move } from '../actions';
 
 @connect( () => ( {} ), dispatch => ( {
 	onResize: () => dispatch( windowResize() ),

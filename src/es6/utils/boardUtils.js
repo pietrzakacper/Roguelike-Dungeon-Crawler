@@ -14,6 +14,8 @@ export const tileIdToClassName = ( id ) => {
 		return 'health-item';
 	case 5:
 		return 'weapon';
+	case 6:
+		return 'boss';
 	default:
 		return 'not-defined';
 	}
